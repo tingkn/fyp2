@@ -26,6 +26,6 @@
 
 @guest
     <p class="font-weight-bold text-secondary mb-3 text-center">
-        You must be <a href="/login?goto={{ $post->slug }}">login</a> to post a reply.
+        You must be <a href="/login?goto={{ $post->slug }}" class="font-green">logged in</a> to post a reply.
     </p>
 @endguest

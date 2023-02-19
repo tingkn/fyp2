@@ -9,10 +9,10 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-3">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('home') }}">Home</a>
+                            <a href="{{ route('home') }}" class="font-green">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('post.index') }}">Post</a>
+                            <a href="{{ route('post.index') }}" class="font-green">Post</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             {{ $post->title }}

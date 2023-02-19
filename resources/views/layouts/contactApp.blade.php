@@ -18,7 +18,7 @@
     <link href="{{ asset('css/bootswatch-lumen.min.css') }}" rel="stylesheet">
 
     {{-- Custom CSS --}}
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
 
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -30,8 +30,6 @@
 
 <body>
     <div id="app">
-        @include('layouts.navbar.desktop')
-
         {{-- Mobile header --}}
         <div class="d-sm-block d-md-none">
             <nav class="navbar navbar-dark bg-green">
@@ -45,10 +43,6 @@
             @yield('content')
         </main>
     </div>
-
-    <!-- Mobile Navbar -->
-    @include('layouts.navbar.mobile')
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')

@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="css/style.css">
+
 <div class="d-md-none d-lg-none d-xl-none p-0 mt-4">
-    <nav class="navbar navbar-dark bg-primary navbar-expand fixed-bottom p-0">
+    <nav class="navbar navbar-dark bg-green navbar-expand fixed-bottom p-0">
         <ul class="navbar-nav nav-justified w-100">
             <li class="nav-item mt-1">
                 <a href="{{ route('post.index') }}"

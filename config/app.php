@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Plastic_Recycle_It_Up'),
 
     /*
     |--------------------------------------------------------------------------

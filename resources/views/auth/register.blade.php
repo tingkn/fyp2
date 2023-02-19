@@ -8,8 +8,8 @@
             <div class="col-md-8">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('login') }}">Auth</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}" class="font-green">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('login') }}" class="font-green">Auth</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Register</li>
                     </ol>
                 </nav>
@@ -81,7 +81,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary bg-green">
                                         {{ __('Register') }}
                                     </button>
                                 </div>

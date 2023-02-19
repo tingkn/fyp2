@@ -1,3 +1,11 @@
+.bg-green {
+    background-color: #7cb69d;
+}
+
+.font-green {
+    color: #507963;
+}
+
 .card-hover {
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
@@ -18,7 +26,7 @@
 }
 
 ::-webkit-scrollbar-track {
-    border: 1px solid #158cba;
+    border: 1px solid #507963;
     background-color: #e3e3e3;
 }
 
@@ -28,8 +36,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #127ba3;
+    background-color: #507963;
     border-radius: 15px;
-
-    /* #158CBA */
 }

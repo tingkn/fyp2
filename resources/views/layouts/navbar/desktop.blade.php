@@ -1,8 +1,10 @@
+<link rel="stylesheet" href="css/style.css">
+
 <div class="d-none d-md-block">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-green">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                Plastic Recycle-It-Up
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -33,11 +35,21 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link{{ request()->routeIs('post.*') ? ' active' : '' }}"
-                            href="{{ route('post.index') }}">{{ __('Posts') }}</a>
+                        <a class="nav-link" href="HTRecycle">How to Recycle</a>
                     </li>
-
-                    <!-- Authentication Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="WTRecycle">Where to Recycle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"href="forum">Forum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="quiz">Quiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog">Blog</a>
+                    </li>
+                    
                     @guest
                         @if (Route::has('login'))
                             <li class="nav-item">
@@ -53,6 +65,10 @@
                             </li>
                         @endif
                     @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="chat">Chat</a>
+                        </li>
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
