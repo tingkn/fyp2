@@ -57,7 +57,7 @@ class SettingController extends Controller
                 'password' => bcrypt($request->password)
             ]);
 
-            return redirect()->back()->with('success', 'Password chnged.');
+            return redirect()->back()->with('success', 'Password changed successfully.');
 
             // dd(1);
         } else {

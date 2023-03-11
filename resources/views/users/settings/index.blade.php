@@ -5,7 +5,7 @@
 @section('content')
     <div class="container mb-5">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <!-- <div class="col-md-8">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -14,7 +14,7 @@
                 </nav>
 
                 @include('partials.alert')
-            </div>
+            </div> -->
 
             {{-- Profile --}}
             <div class="col-md-8 mt-3">

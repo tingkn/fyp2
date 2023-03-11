@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.authApp')
+
+<!-- include('layouts.navbar.desktop') -->
+
+<!-- 记得回来看这个 可以的话尽量做成这样 让app blade php 跟header分开 -->
 
 @section('title', 'Login')
 
@@ -9,7 +13,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}" class="font-green">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Auth</li>
+                        <li class="breadcrumb-item active" aria-current="page">Login</li>
                     </ol>
                 </nav>
 
@@ -56,7 +60,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <!-- <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
@@ -67,7 +71,7 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
@@ -75,11 +79,15 @@
                                         {{ __('Login') }}
                                     </button>
 
-                                    @if (Route::has('password.request'))
+                                    <a class="btn btn-link font-green" href="{{ __('register') }}">
+                                        Don't Have An Account Yet? Register Now
+                                    </a>
+
+                                    <!-- @if (Route::has('password.request'))
                                         <a class="btn btn-link font-green" href="{{ route('password.request') }}">
                                             {{ __('Forgot Your Password?') }}
                                         </a>
-                                    @endif
+                                    @endif -->
                                 </div>
                             </div>
                         </form>

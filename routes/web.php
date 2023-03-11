@@ -1,11 +1,17 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController,PostController,UserController,ReplyController,CommentController,VoteController,SettingController};
-use App\Http\Controllers\CompanyCRUDController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\{HomeController,PostController,UserController,
+                            ReplyController,CommentController,VoteController,
+                            SettingController, ContactFormController, FormsController};
 use App\Http\Controllers\UserBlogController;
+use App\Http\Controllers\ForumController;
+use App\Http\Controllers\HTRecycleController;
+// use App\Http\Controllers\PlasticsController;
+// use App\Http\Controllers\RecyclingCentreController;
 
 
 Auth::routes();
@@ -56,10 +62,6 @@ Route::get('/forum', ['as'=>'forum',function() {
     return view('forum');
 }]);
 
-Route::get('/homepage', ['as'=>'homepage',function() {
-    return view('homepage');
-}]);
-
 Route::get('/HTRecycle', ['as'=>'howto',function() {
     return view('HTRecycle');
 }]);
@@ -76,6 +78,23 @@ Route::get('/quiz', ['as'=>'quiz',function() {
     return view('quiz');
 }]);
 
+Route::get('/quiz', function () {
+    return view('quiz');
+});
+
+Route::post('/quiz', function () {
+    $answer = request('answer');
+
+    // Check the answer and set the session variable accordingly
+    if ($answer === 'Paris' || $answer === 'China') {
+        session(['answer' => 'correct']);
+    } else {
+        session(['answer' => 'incorrect']);
+    }
+
+    return back();
+});
+
 Route::get('/result', ['as'=>'result',function() {
     return view('result');
 }]);
@@ -84,43 +103,25 @@ Route::get('/WTRecycle', ['as'=>'whereto',function() {
     return view('WTRecycle');
 }]);
 
-// Admin
-Route::get('/admin/adminUser', ['as'=>'adminuser',function() {
-    return view('admin/adminUser');
-}]);
 
-Route::get('/admin/adminBlog', ['as'=>'adminblog',function() {
-    return view('admin/adminBlog');
-}]);
+// Newsletter Receiver
+Route::post('/newsletter', function (Request $request) {
+    $email = $request->input('email');
 
-Route::get('/admin/adminForm', ['as'=>'adminform',function() {
-    return view('admin/adminForm');
-}]);
+    DB::table('newsletter')->insert([
+        'email' => $email
+    ]);
 
-Route::get('/admin/adminForum', ['as'=>'adminform',function() {
-    return view('admin/adminForum');
-}]);
+    return 'Email saved successfully!';
+});
 
-Route::get('/admin/adminLogin', ['as'=>'adminlogin',function() {
-    return view('admin/adminLogin');
-}]);
+// Contact Form Controller
+Route::resource('contactus', ContactFormController::class);
+Route::resource('/contactus', ContactFormController::class);
 
-Route::get('/admin/adminNewsletter', ['as'=>'adminnews',function() {
-    return view('admin/adminNewsletter');
-}]);
 
-Route::get('/admin/dashboard', ['as'=>'dashboard',function() {
-    return view('admin/dashboard');
-}]);
-
-/* Controller */
-// Admin Controller
-Route::resource('companies', CompanyCRUDController::class);
-Route::resource('/admin/companies', CompanyCRUDController::class);
-
-Route::resource('blogs', BlogController::class);
-Route::resource('/admin/blogs', BlogController::class);
-
-// User Controller
+// Blog Controller
 Route::resource('blog', UserBlogController::class);
 Route::resource('/blog', UserBlogController::class);
+Route::get('/blog/{title}', [App\Http\Controllers\UserBlogController::class,'show'])->name('blog.show');
+

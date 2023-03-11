@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateRecyclingcentreTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('recyclingcentre', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('postcode');
             $table->string('name');
-            $table->string('email');
             $table->string('address');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('recyclingcentre');
     }
-};
+}

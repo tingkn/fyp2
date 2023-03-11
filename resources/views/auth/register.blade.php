@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.authApp')
 
 @section('title', 'Register')
 
@@ -9,7 +9,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}" class="font-green">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('login') }}" class="font-green">Auth</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('login') }}" class="font-green">Login</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Register</li>
                     </ol>
                 </nav>

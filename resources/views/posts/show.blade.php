@@ -6,7 +6,7 @@
     <div class="container mb-5">
         <div class="row justify-content-center">
             <div class="col-md-8 mb-3">
-                <nav aria-label="breadcrumb">
+                <!-- <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-3">
                         <li class="breadcrumb-item">
                             <a href="{{ route('home') }}" class="font-green">Home</a>
@@ -18,7 +18,7 @@
                             {{ $post->title }}
                         </li>
                     </ol>
-                </nav>
+                </nav> -->
 
                 @include('partials.alert')
             </div>

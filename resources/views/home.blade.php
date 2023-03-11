@@ -7,18 +7,8 @@
         <div class="row justify-content-center">
             <div class="col-md-5 mt-3">
                 <form action="/" method="GET" class="row">
-                    <div class="col-md-10 m-0">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="search"
-                                value="{{ request()->query('search') }}" placeholder="Username, title, or description">
-                        </div>
-                    </div>
-
-                    <div class="col-md-2">
-                        <button class="button-search" type="submit">
-                            <i class="fas fa-search mr-1"></i>
-                        </button>
-                    </div>
+                    <input type="text" name="search" id="searchInput"
+                        value="{{ request()->query('search') }}" placeholder="Search username, title, or content...">
                 </form>
             </div>
 

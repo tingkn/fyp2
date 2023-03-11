@@ -41,7 +41,7 @@
                         <a class="nav-link" href="WTRecycle">Where to Recycle</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"href="forum">Forum</a>
+                        <a class="nav-link"href="post">Post</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="quiz">Quiz</a>

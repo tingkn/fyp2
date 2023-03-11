@@ -33,7 +33,7 @@ class CommentController extends Controller
 
         event(new PostChanged($post));
 
-        return redirect()->back()->with('success', 'Comment sended.');
+        return redirect()->back()->with('success', 'Comment sent.');
     }
 
     /**

@@ -30,34 +30,6 @@
 
 <body>
     <div id="app">
-        @include('includes.header')
-        @php
-  $url = url()->current();
-@endphp
-
-<header class="{{ $url === url('/') ? 'heading' :
-                    ($url === url('/WTRecycle') ? 'heading-wtr' :
-                    ($url === url('/HTRecycle') ? 'heading-htr' :
-                    ($url === url('/quiz') ? 'heading-quiz' :
-                    ($url === url('/blog') ? 'heading-blog' :
-                    '')))) }}">
-  <div class="text-box">
-    <h1 class="heading-primary">
-        @if ($url === url('/'))
-            Forum
-        @elseif ($url === url('/quiz'))
-            Quiz
-        @elseif ($url === url('/blog'))
-            Blog
-        @elseif ($url === url('/WTRecycle'))
-            Where to Recycle
-        @elseif ($url === url('/HTRecycle'))
-            How to Recycle
-        @endif
-    </h1>
-  </div>
-</header>
-
         {{-- Mobile header --}}
         <div class="d-sm-block d-md-none">
             <nav class="navbar navbar-dark bg-green">
@@ -71,10 +43,7 @@
             @yield('content')
         </main>
     </div>
-
-    <!-- Mobile Navbar -->
-    @include('layouts.navbar.mobile')
-
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')

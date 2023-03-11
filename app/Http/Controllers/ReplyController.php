@@ -40,7 +40,7 @@ class ReplyController extends Controller
 
         event(new PostChanged($reply->comment->post));
 
-        return redirect()->back()->with('success', 'Reply sended.');
+        return redirect()->back()->with('success', 'Reply sent.');
     }
 
     /**

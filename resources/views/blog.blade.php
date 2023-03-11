@@ -3,54 +3,50 @@
 @section('title', 'Plastic Recycle-It-Up')
 
 @section('content')
-@foreach ($blogs as $blog)
-        <tr>
-            <td>{{ $blog->id }}</td>
-            <td>{{ $blog->title }}</td>
-            <td>{{ $blog->content }}</td>
-            <p>{{ $blog->title }}</p>
-            <td>
-<div class="body">
-  <div class="header">
-    <h2>{{ $blog->title }}</h2>
-  </div>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
 
+<body>
+<div class="container">
   <div class="row">
-      <div class="leftcolumn">
-        <div class="card">
-          <h2>TITLE HEADING</h2>
-          <h5>Title description, Dec 7, 2017</h5>
-          <div class="fakeimg" style="height:200px;">Image</div>
-          <p>Some text..</p>
+    @foreach ($blogs as $blog)
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        @php
+          $image = "";
+          switch ($blog->id) { 
+            case (1):
+              $image = "bottles.jpg";
+              break;
+            case (2):
+              $image = "bottles.jpg";
+              break;
+            case (3):
+              $image = "plastics.jpg";
+              break;
+            default:
+              $image = "furniture.jpg";
+          }
+        @endphp
+        <img src="{{ asset('images/' . $image) }}" class="card-img-top" alt="{{ $blog->title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ $blog->title }}</h5>
+          <p class="card-text">{{ substr(strip_tags($blog->content), 0, 100) }}...</p>
+          <a href="{{ route('blog.show', $blog->title) }}" class="btn btn-primary">Read More</a>
         </div>
-        <div class="card">
-          <h2>TITLE HEADING</h2>
-          <h5>Title description, Sep 2, 2017</h5>
-          <div class="fakeimg" style="height:200px;">Image</div>
-          <p>Some text..</p>
-        </div>
-      </div>
-      <div class="rightcolumn">
-        <div class="card">
-          <h2>About Me</h2>
-          <div class="fakeimg" style="height:100px;">Image</div>
-          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-        </div>
-        <div class="card">
-          <h3>Popular Post</h3>
-          <div class="fakeimg">Image</div><br>
-          <div class="fakeimg">Image</div><br>
-          <div class="fakeimg">Image</div>
-        </div>
-        <div class="card">
-          <h3>Follow Me</h3>
-          <p>Some text..</p>
+        <div class="card-footer">
+          <small class="text-muted">{{ $blog->created_at->format('F j, Y') }}</small>
         </div>
       </div>
+    </div>
+    @endforeach
   </div>
 </div>
-@endforeach
-
+</body>
+</html>
 @include('includes.footer')
 @endsection
-

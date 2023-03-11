@@ -9,7 +9,15 @@ class UserBlogController extends Controller
 {
     public function index()
     {
-        $data['blogs'] = Blog::orderBy('id','desc')->paginate(5);
-        return view('blog', $data);
+        $blogs = Blog::orderBy('id','desc')->paginate(5);
+        return view('blog', compact('blogs'));
     }
+
+
+    public function show($title)
+    {
+        $blog = Blog::where('title', $title)->first();
+        return view('blog.index', compact('blog'));
+    }
+
 }
