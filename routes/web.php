@@ -4,20 +4,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController,PostController,UserController,
-                            ReplyController,CommentController,VoteController,
-                            SettingController, ContactFormController, FormsController};
-use App\Http\Controllers\UserBlogController;
-use App\Http\Controllers\ForumController;
-use App\Http\Controllers\HTRecycleController;
-// use App\Http\Controllers\PlasticsController;
-// use App\Http\Controllers\RecyclingCentreController;
+use App\Http\Controllers\{HomeController,PostController,UserController, ReplyController,
+                            CommentController,VoteController, SettingController, ContactFormController, 
+                            FormsController, UserBlogController, ForumController, HTRecycleController,
+                            WTRecycleController, MessagesController, WelcomeController, FavoritesController,
+                            QuizzesController};
 
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])
+Route::get('/home', [HomeController::class, 'index'])
     ->name('home');
+
+Route::view('/', 'welcome')->name('welcome');
+Route::get('/', [App\Http\Controllers\WelcomeController::class,'show'])->name('welcome.show');
 
 Route::resource('post', PostController::class);
 
@@ -42,16 +42,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/change-password', [SettingController::class, 'ChangePassword'])->name('setting.ChangePassword');
 });
 
-Route::get('/errors/404', ['as'=>'error',function() {
-    return view('errors/404');
-}]);
-
 Route::get('/blog', ['as'=>'blog',function() {
     return view('blog');
-}]);
-
-Route::get('/chat', ['as'=>'chat',function() {
-    return view('chat');
 }]);
 
 Route::get('/contactus', ['as'=>'contact',function() {
@@ -66,38 +58,8 @@ Route::get('/HTRecycle', ['as'=>'howto',function() {
     return view('HTRecycle');
 }]);
 
-Route::get('/newsletter', ['as'=>'newsletter',function() {
-    return view('newsletter');
-}]);
-
-Route::get('/profile', ['as'=>'profile',function() {
-    return view('profile');
-}]);
-
-Route::get('/quiz', ['as'=>'quiz',function() {
-    return view('quiz');
-}]);
-
-Route::get('/quiz', function () {
-    return view('quiz');
-});
-
-Route::post('/quiz', function () {
-    $answer = request('answer');
-
-    // Check the answer and set the session variable accordingly
-    if ($answer === 'Paris' || $answer === 'China') {
-        session(['answer' => 'correct']);
-    } else {
-        session(['answer' => 'incorrect']);
-    }
-
-    return back();
-});
-
-Route::get('/result', ['as'=>'result',function() {
-    return view('result');
-}]);
+Route::resource('quizzes', QuizzesController::class)->only(['index', 'show']);
+Route::post('quizzes/{quiz}/answer', [QuizzesController::class, 'answer'])->name('quizzes.answer');
 
 Route::get('/WTRecycle', ['as'=>'whereto',function() {
     return view('WTRecycle');
@@ -125,3 +87,17 @@ Route::resource('blog', UserBlogController::class);
 Route::resource('/blog', UserBlogController::class);
 Route::get('/blog/{title}', [App\Http\Controllers\UserBlogController::class,'show'])->name('blog.show');
 
+// Chat
+Route::get('/messages', [MessagesController::class, 'index'])->name('messages.index');
+Route::get('/messages/create', [MessagesController::class, 'create'])->name('messages.create');
+Route::post('/messages', [MessagesController::class, 'store'])->name('messages.store');
+
+//Where to Recycle
+Route::get('/WTRecycle', [App\Http\Controllers\WTRecycleController::class, 'index'])->name('WTRecycle.index');
+
+
+// Favourites
+Route::get('/favorites', [FavoritesController::class, 'index'])->name('favorites.index');
+Route::post('/favorites', [FavoritesController::class, 'store'])->name('favorites.store');
+Route::delete('/favorites/{id}', [App\Http\Controllers\FavoritesController::class, 'destroy'])
+    ->name('favorites.destroy');

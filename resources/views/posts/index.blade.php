@@ -3,29 +3,30 @@
 @section('title', 'Your Posts')
 
 @section('content')
+@if (Auth::check())
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+
+<body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Post</li>
-                    </ol>
-                </nav>
-
+            <div class="col-md-12">
                 @include('partials.alert')
             </div>
 
-            <div class="col-md-8 mb-3">
-                <h4 class="float-left">All Your Posts</h4>
-
+            <div class="col-md-12 mb-3 mt-2">
                 <a href="{{ route('post.create') }}" class="btn btn-outline-primary float-right">
                     <i class="fas fa-plus"></i>
                     Create New Post
                 </a>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-hover table-striped">
                         <thead>
@@ -54,28 +55,42 @@
                                             <i class="fas fa-edit"></i>
                                         </a>
 
-                                        <form action="{{ route('post.destroy', $post->slug) }}" method="POST"
-                                            onsubmit="return confirm('Are you sure want to delete this post?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="hidden" name="slug" value="{{ $post->slug }}">
-                                            <button type="submit" class="btn btn-outline-danger btn-sm">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </form>
+                                        <div style="margin-left:8px;">
+                                            <form action="{{ route('post.destroy', $post->slug) }}" method="POST"
+                                                onsubmit="return confirm('Are you sure want to delete this post?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="hidden" name="slug" value="{{ $post->slug }}">
+                                                <button type="submit" class="btn btn-outline-danger btn-xl">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-center">Posts not found.</td>
+                                    <td colspan="7" class="text-center">You don't have any posts yet.</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
-
-                {{ $posts->links() }}
+                <div class="col-md-12 mb-5 mt-5">
+                    <div class="d-flex justify-content-center">
+                        {{ $posts->links() }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</body>
+</html>
+@else
+    <!-- Redirect unauthenticated users to login page -->
+    <div class="alert alert-danger">
+        <p>You need to <a href="{{ route('login') }}">log in</a> to access this page.</p>
+    </div>
+@endif
+@include('includes.footer')
 @endsection

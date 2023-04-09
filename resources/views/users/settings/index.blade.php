@@ -1,23 +1,28 @@
 @extends('layouts.app')
 
-@section('title', 'Setting')
+@section('title', 'Plastic Recycle-It-Up')
 
 @section('content')
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+
+<body>
     <div class="container mb-5">
         <div class="row justify-content-center">
-            <!-- <div class="col-md-8">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Setting</li>
-                    </ol>
-                </nav>
-
-                @include('partials.alert')
-            </div> -->
 
             {{-- Profile --}}
-            <div class="col-md-8 mt-3">
+            <div class="col-md-12 mt-5">        
+                
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-md-3">
                         <h4>Profile</h5>
@@ -56,36 +61,6 @@
                                         @enderror
                                     </div>
 
-                                    <div class="row form-group">
-                                        <div class="col-md-4 text-center">
-                                            @if (auth()->user()->avatar)
-                                                <img src="{{ asset('storage/img/avatar/' . auth()->user()->avatar) }}"
-                                                    alt="Avatar" class="img-fluid rounded"
-                                                    style="width: 100%; height: 100px; object-fit: cover;">
-                                            @else
-                                                <img src="{{ 'https://www.gravatar.com/avatar/' . md5(strtolower(trim(auth()->user()->email))) . '?s=' . 350 }}"
-                                                    alt="Avatar" class="img-fluid rounded"
-                                                    style="width: 100%; height: 100px; object-fit: cover;">
-                                            @endif
-
-                                        </div>
-
-
-                                        <div class="col-md-8 mt-1">
-                                            <label for="avatar">Avatar</label>
-                                            <input type="file" name="avatar" id="avatar"
-                                                class="form-control @error('avatar') is-invalid @enderror">
-                                            <small class="text-secondary">Leave it blank if you don't want to be
-                                                replaced.</small>
-
-                                            @error('avatar')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary">
                                             Update
@@ -98,11 +73,11 @@
                 </div>
             </div>
 
-            <div class="col-md-8 my-3">
+            <div class="col-md-12 my-3">
                 <hr>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-3">
                         <h4>Change Password<h4>
@@ -166,4 +141,7 @@
             </div>
         </div>
     </div>
+    </body>
+</html>
+@include('includes.footer')
 @endsection

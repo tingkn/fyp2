@@ -1,41 +1,53 @@
-.bg-green {
-    background-color: #7cb69d;
+body {
+    background: linear-gradient(to right, #66a7dd 50%, #147fd7 100%);
 }
 
-.font-green {
-    color: #507963;
+h1 {
+    margin-top: 100px;
+    color: white;
+    text-align: center;
+}
+h1 a {
+    color: white;
+}
+h1 a:hover {
+    color: white;
 }
 
-.card-hover {
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
+.bg-blue {
+    background-color: #3490dc;
 }
 
-.card-hover:hover,
-.card-hover:focus,
-.card-hover:active {
-    -webkit-transform: translateY(7px);
-    transform: translateY(7px);
-    -webkit-box-shadow: 2px 2px 2px 2px #eaedeb !important;
-    -moz-box-shadow: 2px 2px 2px 2px #eaedeb !important;
-    box-shadow: 2px 2px 2px 2px #eaedeb !important;
+a {
+    color: #3490dc;
+    margin-left: 5px;
 }
 
-::-webkit-scrollbar-track {
-    border: 1px solid #507963;
-    background-color: #e3e3e3;
+a:hover {
+    text-decoration: none;
+    color: #2a74b0;
 }
 
-::-webkit-scrollbar {
-    height: 4px;
-    width: 8px;
+.button-login {
+    background-color: #3490dc;
+    color: white;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #507963;
-    border-radius: 15px;
+.button-login:hover {
+    background-color: #1381dc;
+    color: white;
 }
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.card-header h2 {
+    text-align: center;
+}
+.card-header:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+  

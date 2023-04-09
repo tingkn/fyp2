@@ -6,16 +6,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}" class="font-green">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('login') }}" class="font-green">Login</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Register</li>
-                    </ol>
-                </nav>
+            <h1><a href="{{ url('/') }}">Plastic Recycle-It-Up</a></h1>
 
                 <div class="card mt-4">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header"><h2>Register</h2></div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
@@ -81,9 +75,12 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary bg-green">
+                                    <button type="submit" class="btn button-login">
                                         {{ __('Register') }}
                                     </button>
+                                    <a href="{{ __('login') }}">
+                                       Already has an account? Login Now
+                                   </a>
                                 </div>
                             </div>
                         </form>

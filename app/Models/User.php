@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Votes::class);
     }
+
+    public function sentMessages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
 }

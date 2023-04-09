@@ -3,21 +3,20 @@
 @section('title', 'Edit comment')
 
 @section('content')
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+<body>
+<div class="header" style="background-image: url({{ asset('images/nature4.jpg') }})">
+    <h1>Edit comment</h1>
+</div>
+
     <div class="container">
         <div class="row justify-content-center">
-
-            <div class="col-md-8 mb-4">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('home') }}">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            Comment
-                        </li>
-                    </ol>
-                </nav>
-
                 @include('partials.alert')
 
                 {{-- card title and content of comments --}}
@@ -48,6 +47,10 @@
             </div>
         </div>
     </div>
+    </body>
+</html>
+@include('includes.footer')
+
 @endsection
 
 @include('partials.trix-editor')

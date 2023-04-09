@@ -6,155 +6,123 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Quiz</title>
-    <style>
-        .quiz-screen {
-          background-color: #f7f7f7;
-          border: 2px solid #555;
-          padding: 30px;
-          width: 80%;
-          max-width: 800px;
-          margin: 0 auto;
-          text-align: center;
-          margin-bottom: 80px;
-        }
-
-        .quiz-slider {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .quiz-slide {
-          display: none;
-        }
-
-        .quiz-slide.active {
-          display: block;
-        }
-
-        .quiz-options {
-          display: flex;
-          flex-direction: column;
-          margin-top: 30px;
-        }
-
-        .quiz-options button {
-          margin-top: 10px;
-          padding: 10px 20px;
-          border: 1px solid #555;
-          background-color: #fff;
-          color: #555;
-          font-size: 1.2rem;
-          cursor: pointer;
-          transition: all 0.3s ease-in-out;
-        }
-
-        .quiz-options button:hover {
-          background-color: #555;
-          color: #fff;
-        }
-
-        .next-button {
-          margin-top: 30px;
-        }
-
-        .result-message {
-          margin-top: 30px;
-          font-size: 1.2rem;
-          font-weight: bold;
-          text-transform: uppercase;
-        }
-
-        .result-message.correct {
-          color: green;
-        }
-
-        .result-message.incorrect {
-          color: red;
-        }
-    </style>
-    <script>
-        function showSlide(n) {
-            var slides = document.getElementsByClassName("quiz-slide");
-
-            if (n > slides.length) {
-                slideIndex = 1;
-            }
-
-            if (n < 1) {
-                slideIndex = slides.length;
-            }
-
-            for (var i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");
-            }
-
-            slides[slideIndex - 1].classList.add("active");
-        }
-
-        var slideIndex = 1;
-        showSlide(slideIndex);
-
-        function nextSlide(n) {
-            showSlide(slideIndex += n);
-        }
-    </script>
 </head>
 <body>
-    <div class="quiz-screen">
-        <h1>Quiz</h1>
+<div class="quiz-screen">
+    <div class="quiz-slider">
+        <div class="quiz-slide active" id="question-1">
+            <p>What is the capital of France?</p>
 
-        <div class="quiz-slider">
-            <div class="quiz-slide active">
-                <p>What is the capital of France?</p>
-
-                <form method="POST" action="/quiz">
-                    @csrf
-
-                    <div class="quiz-options">
-                        <button type="submit" name="answer" value="London">London</button>
-                        <button type="submit" name="answer" value="Paris">Paris</button>
-                        <button type="submit" name="answer" value="New York">New York</button>
-                    </div>
-                </form>
-
-                @if(session('answer') === 'correct')
-                    <p class="result-message correct">Correct!</p>
-                @elseif(session('answer') === 'incorrect')
-                    <p class="result-message incorrect">Incorrect.</p>
-                @endif
+            <div class="quiz-options">
+                <button type="button" onclick="submitAnswer('London', 'question-1')">London</button>
+                <button type="button" onclick="submitAnswer('Paris', 'question-1')">Paris</button>
+                <button type="button" onclick="submitAnswer('New York', 'question-1')">New York</button>
             </div>
-
-            <div class="quiz-slide">
-                <p>What is the largest country in the world by land area?</p>
-
-                <form method="POST" action="/quiz">
-                    @csrf
-
-                    <div class="quiz-options">
-                        <button type="submit" name="answer" value="Russia">Russia</button>
-                        <button type="submit" name="answer" value="China">China</button>
-                        <button type="submit" name="answer" value="USA">USA</button>
-                    </div>
-                </form>
-
-                @if(session('answer') === 'correct')
-                    <p class="result-message correct">Correct!</p>
-                @elseif(session('answer') === 'incorrect')
-                    <p class="result-message incorrect">Incorrect.</p>
-                @endif
-                </div>
-            </div>
-
-        <div class="next-button">
-            <button onclick="nextSlide(-1)">Previous</button>
-            <button onclick="nextSlide(1)">Next</button>
         </div>
+
+        <div class="quiz-slide" id="question-2">
+            <p>What is the largest country in the world by land area?</p>
+
+            <div class="quiz-options">
+                <button type="button" onclick="submitAnswer('Russia', 'question-2')">Russia</button>
+                <button type="button" onclick="submitAnswer('China', 'question-2')">China</button>
+                <button type="button" onclick="submitAnswer('USA', 'question-2')">USA</button>
+            </div>
+        </div>
+
+        <div class="quiz-slide" id="question-3">
+            <p>3?</p>
+
+            <div class="quiz-options">
+                <button type="button" onclick="submitAnswer('Russia', 'question-3')">Russia</button>
+                <button type="button" onclick="submitAnswer('China', 'question-3')">China</button>
+                <button type="button" onclick="submitAnswer('USA', 'question-3')">USA</button>
+            </div>
+        </div>
+
     </div>
+
+    <div class="next-button">
+        <button onclick="nextSlide()">Next</button>
+    </div>
+</div>
+
+<script>
+function showSlide(n) {
+    var slides = document.getElementsByClassName("quiz-slide");
+    var slideIndex = n;
+
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+
+    if (slideIndex < 1) {
+        slideIndex = slides.length;
+    }
+
+    for (var i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+    }
+
+    slides[slideIndex - 1].classList.add("active");
+}
+
+var slideIndex = 1;
+showSlide(slideIndex);
+
+function submitAnswer(answer, questionId) {
+    var form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/quiz";
+    var csrf = document.createElement("input");
+    csrf.type = "hidden";
+    csrf.name = "_token";
+    csrf.value = "{{ csrf_token() }}";
+    form.appendChild(csrf);
+    var answerInput = document.createElement("input");
+    answerInput.type = "hidden";
+    answerInput.name = "answer";
+    answerInput.value = answer;
+    form.appendChild(answerInput);
+    var questionInput = document.createElement("input");
+    questionInput.type = "hidden";
+    questionInput.name = "questionId";
+    questionInput.value = questionId;
+    form.appendChild(questionInput);
+    document.body.appendChild(form);
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // prevent form submission
+    });
+
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form)
+    })
+    .then(function(response) {
+        return response.text();
+    })
+    .then(function(result) {
+        // Display the result in a pop-up window
+        var message = result === 'correct' ? 'Correct!' : 'Incorrect.';
+        alert(message);
+    });
+}
+
+    function nextSlide() {
+    var slides = document.getElementsByClassName("quiz-slide");
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    showSlide(slideIndex);
+}
+</script>
 </body>
 </html>
-
-
 @include('includes.footer')
 @endsection

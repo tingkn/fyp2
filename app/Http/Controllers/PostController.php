@@ -27,7 +27,7 @@ class PostController extends Controller
             ->withCount('comments')
             ->where('user_id', auth()->id())
             ->orderByDesc('created_at')
-            ->paginate();
+            ->paginate(4);
 
         return view('posts.index', compact('posts'));
     }

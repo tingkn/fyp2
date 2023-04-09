@@ -6,7 +6,7 @@
   }
   
   body {
-    background: linear-gradient(to right, #7cb69d 0%, #7cb69d 100%);
+    background: linear-gradient(to right, #66a7dd 50%, #147fd7 100%);
     font-size: 12px;
   }
   
@@ -110,7 +110,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    color: #507963;
+    color: #519cda;
     font-size: 26px;
   }
   
@@ -122,7 +122,7 @@
     bottom: -10px;
     width: 25px;
     height: 4px;
-    background: #7cb69d;
+    background: #3c92d9;
   }
   
   .app-contact {
@@ -168,14 +168,14 @@
   .app-form-button {
     background: none;
     border: none;
-    color: #7cb69d;
+    color: #519cda;
     font-size: 14px;
     cursor: pointer;
     outline: none;
   }
   
   .app-form-button:hover {
-    color: #507963;
+    color: #2972ae;
   }
 
   @media screen and (max-width: 520px) {
@@ -209,7 +209,24 @@
       padding: 0;
     }
   }
-  
-  .font-green {
-    color: #7cb69d;
+
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
 }
+  
+.alert-success {
+  color: #1d643b;
+  background-color: #d7f3e3;
+  border-color: #c7eed8;
+}
+.alert-success hr {
+  border-top-color: #b3e8ca;
+}
+.alert-success .alert-link {
+  color: #123c24;
+}
+  

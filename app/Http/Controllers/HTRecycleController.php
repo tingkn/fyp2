@@ -7,7 +7,7 @@ use App\Models\Plastics;
 
 
 class HTRecycleController extends Controller
-{
+{        
     public function show($id)
     {
         $plastics = Plastics::findOrFail($id);

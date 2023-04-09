@@ -18,6 +18,7 @@ class CreateRecyclingcentreTable extends Migration
             $table->bigInteger('postcode');
             $table->string('name');
             $table->string('address');
+            $table->string('link', 1000);
             $table->timestamps();
         });
     }

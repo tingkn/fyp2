@@ -3,25 +3,28 @@
 @section('title', 'Edit Post - ' . $post->title)
 
 @section('content')
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+<body>
+@php
+    $image = "bg1.jpg";
+@endphp
+
+<div class="header" style="background-image: url({{ asset('images/background/' . $image) }});   
+                              background-size: cover;
+                              background-position: center;
+                              position: relative;">
+    <h1>Edit Post</h1>
+</div>
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="col-md-8 mb-4">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('home') }}">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('post.index') }}">Post</a>
-                        </li>
-                        <li class="breadcrumb-item" aria-current="page">
-                            <a href="{{ route('post.show', $post->slug) }}">{{ $post->title }}</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
-                    </ol>
-                </nav>
-
+            <div class="col-md-12 mb-4 mt-5">
                 @include('partials.alert')
 
                 {{-- card title and content of posts --}}
@@ -35,7 +38,7 @@
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title"
                                     id="title" value="{{ old('title') ?? $post->title }}"
-                                    placeholder="Learn laravel notification">
+                                    placeholder="Title">
 
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -45,7 +48,7 @@
                             <div class="form-group">
                                 <label for="content">Content</label>
 
-                                <input id="content" value="{{ old('content') ?? $post->content }}" type="hidden"
+                                <input id="content" class="form-control @error('content') is-invalid @enderror" value="{{ old('content') ?? $post->content }}" type="hidden"
                                     name="content">
 
                                 <trix-editor input="content"></trix-editor>
@@ -65,6 +68,9 @@
             </div>
         </div>
     </div>
+</body>
+</html>
+@include('includes.footer')
 @endsection
 
 @include('partials.trix-editor')

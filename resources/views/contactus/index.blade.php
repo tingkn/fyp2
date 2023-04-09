@@ -13,7 +13,7 @@
     <div class="screen">
       <div class="screen-header">
         <div class="screen-header-left">
-          <a href="{{ route('home') }}"><i class="screen-header-button back"></i></a>
+          <a href="{{ url('/') }}"><i class="screen-header-button back"></i></a>
           <div class="screen-header-button maximize"></div>
           <div class="screen-header-button minimize"></div>
         </div>

@@ -3,34 +3,30 @@
 @section('title', $post->title)
 
 @section('content')
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+<body>
+<div class="header" style="background-image: url({{ asset('images/building.jpg') }})">
+    <h1>{{ $post->title }}</h1>
+</div>
     <div class="container mb-5">
         <div class="row justify-content-center">
-            <div class="col-md-8 mb-3">
-                <!-- <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-3">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('home') }}" class="font-green">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('post.index') }}" class="font-green">Post</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            {{ $post->title }}
-                        </li>
-                    </ol>
-                </nav> -->
-
+            <div class="col-md-12 mb-3 mt-5">
                 @include('partials.alert')
             </div>
         </div>
 
-        {{-- Desktop votes --}}
         <div class="d-none d-md-block">
             <div class="row justify-content-center mt-0">
                 <div class="col-md-1">
                     <div class="card">
-                        <div class="card-body pl-3 text-center">
-                            <form action="{{ route('vote.store') }}" class="d-flex form-inline" method="POST">
+                        <div class="card-body text-center">
+                            <form action="{{ route('vote.store') }}" method="POST">
                                 @csrf
                                 @method('post')
 
@@ -48,7 +44,7 @@
                                 </div>
                             </form>
 
-                            <form action="{{ route('vote.store') }}" class="d-flex form-inline" method="POST">
+                            <form action="{{ route('vote.store') }}" method="POST">
                                 @csrf
                                 @method('post')
 
@@ -70,73 +66,25 @@
                     </div>
                 </div>
 
-                <div class="col-md-7">
+                <div class="col-md-11">
                     @include('posts.card.post-content', ['post' => $post])
                 </div>
             </div>
         </div>
-
-        {{-- Mobile votes --}}
-        <div class="d-sm-block d-md-none">
-            <div class="row justify-content-center mt-0">
-                <div class="col-md-12">
-                    @include('posts.card.post-content', ['post' => $post])
-                </div>
-
-                <div class="col-md-12 mt-3">
-                    <h4 class="mt-1">Votes</h4>
-                    <div class="card">
-                        <div class="card-body py-1 px-5 d-flex justify-content-between">
-                            <div class="ml-5">
-                                <form action="{{ route('vote.store') }}" method="POST">
-                                    @csrf
-                                    @method('post')
-
-                                    <div class="{{ $hasVote == 'up' ? 'text-primary' : 'text-secondary' }}">
-                                        <input type="hidden" name="post_id" value="{{ $post->id }}">
-
-                                        <input type="hidden" name="type" value="1">
-
-                                        <button
-                                            class="btn btn-transparent p-1{{ $hasVote == 'up' ? ' text-primary' : ' text-secondary' }}"
-                                            type="submit">
-                                            <h5 class="float-left mr-2 mt-3">{{ $post->up_votes_count }}</h5>
-
-                                            <i class="fas fa-sort-up fa-3x float-right mt-3"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <div class="mr-5">
-                                <form action="{{ route('vote.store') }}" method="POST">
-                                    @csrf
-                                    @method('post')
-
-                                    <div class="{{ $hasVote == 'down' ? 'text-primary' : 'text-secondary' }}">
-                                        <input type="hidden" name="post_id" value="{{ $post->id }}">
-
-                                        <input type="hidden" name="type" value="0">
-
-                                        <button
-                                            class="btn btn-transparent p-1{{ $hasVote == 'down' ? ' text-primary' : ' text-secondary' }}"
-                                            type="submit">
-
-                                            <i class="fas fa-sort-down fa-3x float-left mr-2 mb-3"></i>
-
-                                            <h5 class="float-right mt-3">{{ $post->down_votes_count }}</h5>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        @auth
+        <div class="row justify-content-center mb-2 mt-3">
+            <div class="col-md-12">
+                <form action="{{ route('favorites.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                    <button type="submit" class="btn btn-primary">Add to Favorites</button>
+                </form>
             </div>
         </div>
+        @endauth
 
         <div class="row justify-content-center mb-5">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <h4 class="mt-4">
                     Post a Comment
                 </h4>
@@ -181,6 +129,10 @@
             })
         }
     </script>
+</body>
+</html>
+@include('includes.footer')
+
 @endsection
 
 @include('partials.trix-editor')

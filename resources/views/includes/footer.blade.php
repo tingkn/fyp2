@@ -79,24 +79,24 @@
                                 </div>
                                 <ul>
                                     <li>
-                                        <a href="HTRecycle">How to Recycle</a>
+                                        <a href="{{ url('/HTRecycle') }}">How to Recycle</a>
                                     </li>
                                     <li>
-                                        <a href="blog">Blog</a>
+                                        <a href="{{ url('/blog') }}">Blog</a>
                                     </li>
                                     <li>
-                                        <a href="forum">Forum</a>
+                                        <a href="{{ url('/home') }}">Forum</a>
                                     </li>
                                     <li>
-                                        <a href="quiz">Quiz</a>
+                                        <a href="{{ url('/quizzes') }}">Quiz</a>
                                     </li>
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="WTRecycle">Where to Recycle</a>
+                                        <a href="{{ url('/WTRecycle') }}">Where to Recycle</a>
                                     </li>
                                     <li>
-                                        <a href="contactus">Contact Us</a>
+                                        <a href="{{ url('/contactus') }}">Contact Us</a>
                                     </li>
                                 </ul>
                             </div>

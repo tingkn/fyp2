@@ -19,21 +19,8 @@ class SettingController extends Controller
         $request->validate([
             'name' => 'required|string|min:5|max:50',
             'email' => 'required|email|unique:users,email,' . auth()->id(),
-            'avatar' => 'nullable|image|max:1024'
         ]);
 
-        if ($request->file('avatar')->isValid()) {
-            $filename = strtolower(Str::random(20))  . '.' . $request->avatar->extension();
-
-            $request->avatar->storeAs('public/img/avatar/', $filename);
-
-            // delete old avatar from storage
-            if (auth()->user()->avatar != null) {
-                Storage::delete('public/img/avatar/' . auth()->user()->avatar);
-            }
-
-            auth()->user()->update(['avatar' => $filename]);
-        }
 
         auth()->user()->update([
             'name' => $request->name,
@@ -62,7 +49,7 @@ class SettingController extends Controller
             // dd(1);
         } else {
             // dd(2);
-            return redirect()->back()->with('error', 'Wrong old password.');
+            return redirect()->back()->withErrors(['current_password' => 'Wrong old password.']);
         }
     }
 }

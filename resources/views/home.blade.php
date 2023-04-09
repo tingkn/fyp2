@@ -6,9 +6,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5 mt-3">
-                <form action="/" method="GET" class="row">
-                    <input type="text" name="search" id="searchInput"
-                        value="{{ request()->query('search') }}" placeholder="Search username, title, or content...">
+                <form action="/home" method="GET" class="row">
+                    <input type="text" id="searchInput" class="form-control" name="search" placeholder="Search...">
                 </form>
             </div>
 
@@ -62,7 +61,7 @@
                     </a>
                 </div>
             @empty
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="alert alert-danger">
                         Posts not found.
                     </div>

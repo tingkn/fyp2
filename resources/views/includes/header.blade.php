@@ -3,18 +3,17 @@
 <head>
 <meta charset="utf-8">
 </head>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <body>
-      <div class="sample-section-wrap">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<table width="100%" class="sample-section-wrap">
           <tbody>
             <tr>
               <td style="font-size: 30px; padding-left:10px;" width="30%"><a href="/">Plastic Recycle-It-Up</a></td>
               <td width="12%"><a href="{{ url('/HTRecycle') }}">How to Recycle</a></td>
               <td width="13%"><a href="{{ url('/WTRecycle') }}">Where to Recycle</a></td>
-              <td width="7%"><a href="/">Forum</a></td>
-              <td width="6%"><a href="{{ url('/quiz') }}">Quiz</a></td>
-              <td width="25%"><a href="{{ url('/blog') }}">Blog</a></td>
+              <td width="7%"><a href="/home">Forum</a></td>
+              <td width="6%"><a href="{{ url('/quizzes') }}">Quiz</a></td>
+              <td width="16%"><a href="{{ url('/blog') }}">Blog</a></td>
               <td>
                 @guest
                   @if (Route::has('login'))
@@ -29,7 +28,7 @@
                   @endif
                 @else
                   <td>
-                    <a class="nav-link" href="chat">Chat</a> 
+                    <a class="nav-link" href="{{ url('/messages') }}">Chat</a> 
                   </td>
                   <td>
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -41,8 +40,11 @@
                       {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="post">
+                      <a class="dropdown-item" href="{{ url('/post') }}">
                         {{ __('My Post') }}
+                      </a>
+                      <a class="dropdown-item" href="{{ url('/favorites') }}">
+                        {{ __('My Favorites') }}
                       </a>
                       <a class="dropdown-item" href="{{ route('setting.index') }}">
                         {{ __('Setting') }}
@@ -60,7 +62,6 @@
             </tr>
           </tbody>
         </table>
-    </div>
-</body>
+    </body>
 </html>
 

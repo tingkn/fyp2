@@ -32,7 +32,7 @@
     <div id="app">
         {{-- Mobile header --}}
         <div class="d-sm-block d-md-none">
-            <nav class="navbar navbar-dark bg-green">
+            <nav class="navbar navbar-dark bg-blue">
                 <span class="navbar-brand mb-0 h1">
                     {{ config('app.name', 'Plastic_Recycle_It_Up') }}
                 </span>
