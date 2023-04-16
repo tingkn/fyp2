@@ -13,6 +13,11 @@
 </head>
 
 <body>
+<form action="{{ route('favorites.index') }}" method="GET">
+  <div class="form-group">
+    <input type="text" id="searchInput" class="form-control" name="search" placeholder="Search...">
+  </div>
+</form>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -29,9 +34,9 @@
                         </thead>
 
                         <tbody>
-                        @foreach ($favorites as $fav)
-                             <tr>
-                                <td>{{ $fav->id }}</td>
+                        @foreach ($favorites as $key => $fav)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
                                 @php
                                     $post = DB::table('posts')
                                             ->join('favorites', 'posts.id', '=', 'favorites.post_id')

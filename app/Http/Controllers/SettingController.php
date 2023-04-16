@@ -34,7 +34,7 @@ class SettingController extends Controller
     {
         $request->validate([
             'current_password' => 'required',
-            'password' => 'required|min:5|same:password_confirmation',
+            'password' => 'required|min:8|same:password_confirmation',
         ]);
 
         // Check current password
@@ -51,5 +51,22 @@ class SettingController extends Controller
             // dd(2);
             return redirect()->back()->withErrors(['current_password' => 'Wrong old password.']);
         }
+    }
+
+    public function deleteProfile()
+    {
+        // Delete user avatar if it exists
+        if (auth()->user()->avatar) {
+            Storage::delete('public/' . auth()->user()->avatar);
+        }
+
+        // Delete user record from the database
+        auth()->user()->delete();
+
+        // Logout the user
+        auth()->logout();
+
+        // Redirect to the home page with a success message
+        return redirect('/')->with('success', 'Your account has been deleted successfully.');
     }
 }

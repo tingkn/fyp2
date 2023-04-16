@@ -3,7 +3,7 @@
 @section('title', 'Plastic Recycle-It-Up')
 
 @section('content')
-
+@if (Auth::check())
 <!doctype html>
 <html>
 <head>
@@ -50,4 +50,10 @@
     </body>
 </html>
 @include('includes.footer')
+@else
+    <!-- Redirect unauthenticated users to login page -->
+    <div class="alert alert-danger">
+        <p>You need to <a href="{{ route('login') }}">log in</a> to access this page.</p>
+    </div>
+@endif
 @endsection

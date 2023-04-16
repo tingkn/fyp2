@@ -30,11 +30,10 @@
     @endforeach
   </div>
   <div class="col-md-12 mb-2 mt-5">
-                    <div class="d-flex justify-content-center">
-                        {{ $blogs->links() }}
-                    </div>
-                </div>
-
+      <div class="d-flex justify-content-center">
+          {{ $blogs->links() }}
+      </div>
+  </div>
 </div>
 </body>
 </html>

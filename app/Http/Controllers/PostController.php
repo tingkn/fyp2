@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -21,17 +22,21 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = $request->input('query');
         $posts = Post::with('author:id,name')
             ->withCount('comments')
             ->where('user_id', auth()->id())
+            ->when($query, function($q) use ($query) {
+                $q->where('title', 'like', '%'.$query.'%');
+            })
             ->orderByDesc('created_at')
             ->paginate(4);
-
-        return view('posts.index', compact('posts'));
+    
+        return view('posts.index', compact('posts', 'query'));
     }
-
+            
     /**
      * Show the form for creating a new resource.
      *

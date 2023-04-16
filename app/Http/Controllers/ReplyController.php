@@ -7,7 +7,6 @@ use App\Http\Requests\StoreReplyRequest;
 use App\Http\Requests\UpdateReplyRequest;
 use App\Models\Reply;
 use App\Models\Comment;
-use App\Notifications\ReplyCommentNotification;
 
 class ReplyController extends Controller
 {
@@ -30,11 +29,6 @@ class ReplyController extends Controller
 
         $reply = Reply::create($attr);
         $reply->load('user:id,name');
-
-        if ($comment->user->id !== auth()->id()) {
-            // Notify the user if reply another user comment
-            $comment->user->notify(new ReplyCommentNotification($reply, $comment));
-        }
 
         $reply->load('comment.post');
 

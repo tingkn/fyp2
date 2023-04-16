@@ -13,9 +13,20 @@
 </head>
 
 <body>
+<div class="header" style="background-image: url({{ asset('images/background/bg10.jpg') }});   
+                              background-size: cover;
+                              background-position: center;
+                              position: relative;">
+    <h1>ALL YOUR POSTS</h1>
+</div>
+<form action="{{ route('posts.index') }}" method="GET">
+  <div class="form-group">
+    <input type="text" id="searchInput" class="form-control" name="query" placeholder="Search...">
+  </div>
+</form>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3">
                 @include('partials.alert')
             </div>
 

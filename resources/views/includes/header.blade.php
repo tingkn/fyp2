@@ -11,7 +11,7 @@
               <td style="font-size: 30px; padding-left:10px;" width="30%"><a href="/">Plastic Recycle-It-Up</a></td>
               <td width="12%"><a href="{{ url('/HTRecycle') }}">How to Recycle</a></td>
               <td width="13%"><a href="{{ url('/WTRecycle') }}">Where to Recycle</a></td>
-              <td width="7%"><a href="/home">Forum</a></td>
+              <td width="7%"><a href="{{ url('/home') }}">Forum</a></td>
               <td width="6%"><a href="{{ url('/quizzes') }}">Quiz</a></td>
               <td width="16%"><a href="{{ url('/blog') }}">Blog</a></td>
               <td>

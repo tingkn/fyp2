@@ -40,14 +40,13 @@
                     ($url === url('/WTRecycle') ? 'heading-wtr' :
                     ($url === url('/HTRecycle') ? 'heading-htr' :
                     ($url === url('/blog') ? 'heading-blog' :
-                    ($url === url('/post') ? 'heading-1' :
                     ($url === url('/post/create') ? 'heading-1' :
                     ($url === url('/favorites') ? 'heading-1' :
-                    ($url === url('/messages') ? 'heading-3' :
-                    ($url === url('/messages/create') ? 'heading-3' :
+                    ($url === url('/messages') ? 'heading-2' :
+                    ($url === url('/messages/create') ? 'heading-2' :
                     ($url === url('/setting') ? 'heading-1' :
                     ($url === url('/quizzes') ? 'heading-post' :
-                    ''))))))))))) }}">
+                    '')))))))))) }}">
     <div class="text-box">
       <h1 class="heading-primary">
             @if ($url === url('/home'))
@@ -60,8 +59,6 @@
                 Where to Recycle
             @elseif ($url === url('/HTRecycle'))
                 How to Recycle
-            @elseif ($url === url('/post'))
-                All Your Posts
             @elseif ($url === url('/favorites'))
                 All Your Favorites
             @elseif ($url === url('/post/create'))

@@ -19,12 +19,15 @@
       <button class="button-search"><a href="{{ url('/HTRecycle') }}">How To Recycle?</a></button>
     </div>
   </div>
+
   <div class="col-md-6 welcome-img">
-    <img src="{{ asset('images/nature4.jpg') }}" class="img-fluid">
+    <img src="{{ asset('images/nature9.jpg') }}" class="img-fluid">
   </div>
+
   <div class="col-md-6">
-    <img src="{{ asset('images/nature3.jpg') }}" class="img-fluid">
+    <img src="{{ asset('images/nature10.jpg') }}" class="img-fluid">
   </div>
+  
   <div class="col-md-6 d-flex align-items-center">
     <div>
       <h1><strong><i>Plastic</strong></i> is a more destructive weapon than a nuclear bomb or an atom bomb, its impoact shall remain for centuries on the future generation</h1>
@@ -57,7 +60,6 @@
     @endforeach
   </div>
 </div>
-
 </body>
 </html>
 @include('includes.footer')

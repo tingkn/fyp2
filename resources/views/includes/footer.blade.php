@@ -41,7 +41,6 @@
                         </div>
                     </div>
                     <div class="footer-awarad">
-                        <img src="images/icon/best.png" alt="">
                         <p>Plastic Recycle-It-Up</p>
                     </div>
                 </div>
@@ -65,7 +64,7 @@
                                 </div>
                                 <div class="contact-info">
                                     <h3>60 12 372 6621</h3>
-                                    <p>Give us a call</p>
+                                    <p>tingkeni19@gmail.com</p>
                                 </div>
                             </div>
                         </div>
@@ -119,24 +118,24 @@
                                     </div>
                                 </form>
                                 <script>
-    // Add an event listener to the form submit event
-    document.getElementById('newsletter-form').addEventListener('submit', function(event) {
-        // Prevent the default form submission behavior
-        event.preventDefault();
+                                    // Add an event listener to the form submit event
+                                    document.getElementById('newsletter-form').addEventListener('submit', function(event) {
+                                        // Prevent the default form submission behavior
+                                        event.preventDefault();
 
-        // Send an AJAX request to the server
-        axios.post('/newsletter', new FormData(this))
-            .then(function(response) {
-                // Display the success message in a popup window
-                alert('Email is saved successfully');
-                    form.reset();
-            })
-            .catch(function(error) {
-                // Display the error message in a popup window
-                alert(error.response.data.message);
-            });
-    });
-</script>
+                                        // Send an AJAX request to the server
+                                        axios.post('/newsletter', new FormData(this))
+                                            .then(function(response) {
+                                                // Display the success message in a popup window
+                                                alert('Email is saved successfully');
+                                                    form.reset();
+                                            })
+                                            .catch(function(error) {
+                                                // Display the error message in a popup window
+                                                alert(error.response.data.message);
+                                            });
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div>

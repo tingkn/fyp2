@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-<div class="header" style="background-image: url({{ asset('images/building.jpg') }})">
+<div class="header" style="background-image: url({{ asset('images/background/bg6.jpg') }})">
     <h1>{{ $post->title }}</h1>
 </div>
     <div class="container mb-5">

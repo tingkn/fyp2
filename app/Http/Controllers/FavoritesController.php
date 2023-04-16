@@ -16,21 +16,26 @@ class FavoritesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $favorites = Favorite::where('user_id', auth()->id())
+        $search = $request->input('search');
+    
+        $favorites = Favorite::query()
+            ->when($search, function ($q) use ($search) {
+                return $q->where(function ($query) use ($search) {
+                    $query->whereHas('post', function ($q) use ($search) {
+                        $q->where('title', 'like', '%'.$search.'%');
+                    });
+                });
+            })
+            ->with('post:title') // eager load post title
+            ->where('user_id', auth()->id()) // filter by user ID
             ->orderBy('id')
             ->paginate(7);
     
-        $posts = DB::table('posts')
-            ->join('favorites', 'posts.id', '=', 'favorites.post_id')
-            ->select('posts.title')
-            ->where('favorites.user_id', auth()->id())
-            ->get();
-    
-        return view('favorites.index', compact('favorites', 'posts'));
+        return view('favorites.index', compact('favorites'));
     }
-    
+        
     public function store(Request $request)
     {
         // Check if the post is already favorited by the user

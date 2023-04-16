@@ -11,11 +11,7 @@
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-@php
-    $image = "bg1.jpg";
-@endphp
-
-<div class="header" style="background-image: url({{ asset('images/background/' . $image) }});   
+<div class="header" style="background-image: url({{ asset('images/background/bg10.jpg') }});   
                               background-size: cover;
                               background-position: center;
                               position: relative;">

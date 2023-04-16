@@ -6,7 +6,6 @@ use App\Events\PostChanged;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
 use App\Models\{Post, Comment};
-use App\Notifications\PostCommentNotification;
 
 class CommentController extends Controller
 {
@@ -25,11 +24,6 @@ class CommentController extends Controller
 
         $comment = Comment::create($attr);
         $comment->load('user:id,name');
-
-        /** only send notification when user commented another user comments.*/
-        if ($comment->post->author->id != auth()->id()) {
-            $comment->post->author->notify(new PostCommentNotification($post, $comment));
-        }
 
         event(new PostChanged($post));
 

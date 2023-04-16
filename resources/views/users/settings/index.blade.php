@@ -136,6 +136,18 @@
                                 </form>
                             </div>
                         </div>
+                        <form id="delete-form" action="{{ route('delete-profile') }}" method="post" class="mt-3">
+                            @csrf
+                            <button type="button" class="btn btn-danger" onclick="confirmDelete()">Delete Account</button>
+                        </form>
+
+                        <script>
+                            function confirmDelete() {
+                                if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+                                    document.getElementById('delete-form').submit();
+                                }
+                            }
+                        </script>
                     </div>
                 </div>
             </div>

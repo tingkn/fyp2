@@ -10019,7 +10019,7 @@ z-index: 9999; /* This will make the modal appear on top of other elements */
 margin-top: 50px;
 height: 40vh;
 background-size: cover;
-background-position: top;
+background-position: center;
 position: relative;
 }
 
@@ -10039,7 +10039,7 @@ text-transform: capitalize;
 .heading {
 margin-top: 50px;
 height: 40vh;
-background-image: url('/images/bottles2.jpg');
+background-image: url('/images/water2.jpg');
 background-size: cover;
 background-position: center;
 position: relative;
@@ -10048,16 +10048,16 @@ position: relative;
 .heading-welcome {
   margin-top: 50px;
   height:90vh;
-  background-image: url('/images/nature2.jpg');
+  background-image: url('/images/nature5.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   position: relative;
 }
 
 .heading-wtr {
 margin-top: 50px;
 height: 40vh;
-background-image: url('/images/bottles.jpg');
+background-image: url('/images/water5.jpg');
 background-size: cover;
 background-position: center;
 position: relative;
@@ -10066,17 +10066,7 @@ position: relative;
 .heading-htr {
 margin-top: 50px;
 height: 40vh;
-background-image: url('/images/ocean.jpg');
-background-size: cover;
-background-position: center;
-position: relative;
-}
-
-.heading-quiz {
-margin-top: 50px;
-margin-bottom: 50px;
-height: 40vh;
-background-image: url('/images/keyboard.jpg');
+background-image: url('/images/water3.jpg');
 background-size: cover;
 background-position: center;
 position: relative;
@@ -10085,7 +10075,7 @@ position: relative;
 .heading-blog {
 margin-top: 50px;
 height: 40vh;
-background-image: url('/images/background/bg1.jpg');
+background-image: url('/images/water6.jpg');
 background-size: cover;
 background-position: center;
 position: relative;
@@ -10094,7 +10084,7 @@ position: relative;
 .heading-post {
 margin-top: 50px;
 height: 40vh;
-background-image: url('/images/background/bg9.jpg');
+background-image: url('/images/water4.jpg');
 background-size: cover;
 background-position: center;
 position: relative;
@@ -10112,39 +10102,11 @@ position: relative;
 .heading-2 {
   margin-top: 50px;
   height: 40vh;
-  background-image: url('/images/background/bg2.jpg');
+  background-image: url('/images/background/bg1.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
 }
-
-.heading-3 {
-  margin-top: 50px;
-  height: 40vh;
-  background-image: url('/images/background/bg3.jpg');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.heading-4 {
-  margin-top: 50px;
-  height: 40vh;
-  background-image: url('/images/background/bg4.jpg');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.heading-5 {
-  margin-top: 50px;
-  height: 40vh;
-  background-image: url('/images/background/bg5.jpg');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
 
 .text-box {
 position: absolute;
@@ -10701,7 +10663,7 @@ display: block;
 clear: both; }
 
 .dk-footer-form {
-position: relative; }
+position: relative; } 
 .dk-footer-form input[type=email] {
   padding: 14px 28px;
   border-radius: 50px;
@@ -10717,7 +10679,7 @@ position: relative; }
   position: absolute;
   top: 0;
   right: 0;
-  padding: 12px 24px 12px 17px;
+  padding: 5px 32px 8px 25px;
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
   border: 1px solid #3490dc;
@@ -10804,9 +10766,6 @@ z-index: 2; }
     cursor: pointer;
     background: #FA6742;
     border-color: #FA6742; }
-    
-/* Credit to https://bootsnipp.com/snippets/ooa9M  */    
-
 
 /* Page link */
 .page-link {
@@ -11104,8 +11063,4 @@ color: #333;
 .title-card i {
   color: #3490dc;
   font-family:  Georgia, 'Times New Roman', Times, serif;
-}
-
-.title-card img {
-
 }
