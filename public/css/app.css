@@ -10594,6 +10594,10 @@ z-index: 2; }
   .dk-footer-box-info .footer-social-link a i.fa-instagram {
     background-color: #B7242A; }
 
+.dk-footer-box-info .footer-social-link a:hover {
+  text-decoration: none;
+}
+
 .footer-awarad {
 margin-top: 285px;
 display: -webkit-box;

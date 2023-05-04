@@ -3,25 +3,24 @@
 @section('title', 'Edit Reply')
 
 @section('content')
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+</head>
+<body>
+<div class="header" style="background-image: url({{ asset('images/nature8.jpg') }})">
+    <h1>Edit Reply</h1>
+</div>
+
     <div class="container">
-        <div class="row justify-content-center">
-
-            <div class="col-md-8 mb-4">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('home') }}">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            Reply
-                        </li>
-                    </ol>
-                </nav>
-
+        <div class="row justify-content-center col-md-12">
                 @include('partials.alert')
 
                 {{-- card title and content of reply --}}
-                <div class="card shadow-sm">
+                <div class="card shadow-sm col-md-12 mt-5">
                     <div class="card-body">
                         <form action="{{ route('reply.update', $reply->id) }}" method="POST">
                             @csrf
@@ -48,6 +47,8 @@
             </div>
         </div>
     </div>
+@include('includes.footer')
+
 @endsection
 
 @include('partials.trix-editor')

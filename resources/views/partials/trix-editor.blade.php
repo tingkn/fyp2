@@ -3,10 +3,12 @@
     <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
 
     <style>
-        trix-toolbar [data-trix-button-group="file-tools"] {
-            display: none;
-        }
-
+    trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+    }
+    trix-toolbar [data-trix-action="link"] {
+        display: none;
+    }
     </style>
 
     <script>

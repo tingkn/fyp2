@@ -11,16 +11,16 @@
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-<div class="header" style="background-image: url({{ asset('images/nature4.jpg') }})">
+<div class="header" style="background-image: url({{ asset('images/nature8.jpg') }})">
     <h1>Edit comment</h1>
 </div>
 
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center col-md-12">
                 @include('partials.alert')
 
                 {{-- card title and content of comments --}}
-                <div class="card shadow-sm">
+                <div class="card shadow-sm col-md-12 mt-5">
                     <div class="card-body">
                         <form action="{{ route('comment.update', $comment->id) }}" method="POST">
                             @csrf
