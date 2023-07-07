@@ -13,5 +13,5 @@ The main codes for this project are located in the '**developer**' branch of thi
 
 Despite initially having only gained basic knowledge of GitHub and Laravel during my internship, I took the initiative to self-learn and explore further in order to successfully complete this project. Although I may not be proficient in these tools yet, I am dedicated to continuously improving my skills and expanding my knowledge.
 
-Feel free to explore the repository, review the code, and any additional resources or documentation available. If you have any questions or suggestions, please don't hesitate to reach out to me.
+Feel free to explore the repository, and review the code. If you have any questions or suggestions, please don't hesitate to reach out to me.
 
